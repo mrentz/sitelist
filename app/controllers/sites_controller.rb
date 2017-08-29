@@ -4,5 +4,6 @@ class SitesController < ApplicationController
   end
 
   def siteinfo
+    @site = Site.find(params[:id])
   end
 end
