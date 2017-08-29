@@ -1,0 +1,4 @@
+class SitesController < ApplicationController
+  def sitelist
+  end
+end
