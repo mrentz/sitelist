@@ -2,7 +2,7 @@
 
 <ul>
 <%@sites.each do |site| %>
- <li> <%= link_to site.name, site_path(site.id) %></li>
+ <li> <%= link_to site.site, site_path(site.id) %></li>
 <% end %>
 </ul>
 
