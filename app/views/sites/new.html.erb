@@ -1,34 +1,8 @@
-<h1> This is where the New Website Form will Go </h1>
+<h1> Save Your Favourite Website </h1>
 
 <div>
-  <p> This is just some guff text to test issue with Heroku hosted instance </p>
+  <p> You can use this site to store your favourite website on! </p>
 </div>
 
+<%= render 'form' %>
 
-<%= form_for(@site) do |f| %>
-
-  <div>
-    <%= f.label :site %>
-    <%= f.text_field :site %>
-  </div>
-
-  <div>
-    <%= f.label :date %>
-    <%= f.text_field :date, value: Date.today %>
-  </div>
-
-  <div>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
-
-  <div>
-    <%= f.label :url %>
-    <%= f.text_field :url %>
-  </div>
-
-  <div>
-  <%= f.submit "Save" %>
-  </div>
-  
-  <% end %>

@@ -18,14 +18,13 @@ class SitesController < ApplicationController
   end
 
   def create
-    site = Site.new(post_params)
+    @site = Site.new(post_params)
 
-    if site.save
-      redirect_to site_path(site)
+    if @site.save
+      redirect_to site_path(@site)
     else
-      redirect_to new_site_path
+      render 'new'
     end
-
 
   end
 
