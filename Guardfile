@@ -35,10 +35,19 @@ guard :minitest do
    watch(%r{^test/.+_test\.rb$})
    watch(%r{^test/test_helper\.rb$}) { 'test' }
 
+
+############ Manually Added Watchers By ME! ##################### 
+   
    watch(%r{^app/views/([^/]*?)/.*\.html\.erb$}) do |matches|
      ["test/controllers/#{matches[1]}_controller_test.rb"] #+
      #integration_tests(matches[1])
    end
+
+
+   watch(%r{^app/models/(.*?)\.rb$}) do |matches|
+     "test/models/#{matches[1]}_test.rb"
+   end
+#################################################################
 
    
   # Rails < 4

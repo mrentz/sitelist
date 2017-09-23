@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170828230300) do
+ActiveRecord::Schema.define(version: 20170923014617) do
 
   create_table "sites", force: :cascade do |t|
     t.string   "name"
     t.string   "site"
-    t.date     "date"
+    t.string   "date"
     t.text     "description"
     t.text     "url"
     t.datetime "created_at",  null: false

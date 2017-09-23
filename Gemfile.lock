@@ -38,6 +38,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     ansi (1.5.0)
     arel (7.1.4)
     bindex (0.5.0)
@@ -52,6 +54,8 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    domainatrix (0.0.11)
+      addressable
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -111,6 +115,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    public_suffix (3.0.0)
     puma (3.10.0)
     rack (2.0.3)
     rack-test (0.6.3)
@@ -198,6 +203,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
+  domainatrix
   guard (= 2.13.0)
   guard-minitest (= 2.4.4)
   jbuilder (~> 2.5)
