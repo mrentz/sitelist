@@ -13,10 +13,4 @@ def parse_url
   end
 end
 
-def url_valid
-http = Net::HTTP.new(self.url)
-response = http.request_get('/')
-p response.code  
-end
-
 end
