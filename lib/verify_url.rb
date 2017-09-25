@@ -1,7 +1,7 @@
 require 'net/http'
 
-p "Enter website url"
-url = gets.chomp
+#p "Enter website url"
+#url = gets.chomp
 
 class VerifyUrl
   
@@ -9,7 +9,7 @@ class VerifyUrl
     http = Net::HTTP.new(url)
     begin
       response = http.request_get('/')
-      status =  response.code
+      status =  response.code.to_i
     rescue
       status = 500
     end
@@ -62,8 +62,8 @@ class VerifyUrl
   end
   
   def self.check(url)
-    url_status = status(url)
-    if  (url_status =~ /^3|2/).nil? then # if not valid a valid url
+    url_status = status(url).to_i
+    if  (url_status.to_s =~ /^3|2/).nil? then # if not valid a valid url
       domain = assign_url(get_domain(url))
     else
       a = validation(url, url_status)
