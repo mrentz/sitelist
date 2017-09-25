@@ -7,7 +7,7 @@ class Site < ApplicationRecord
   validates :site, :url, uniqueness: true
 
 # w= VerifyUrl.check("ggghfjy.com")
-p params:
+#  p "ppppppppppppppppppppppppppppppppppp #{@url}"
   
   before_save :parse_url
 

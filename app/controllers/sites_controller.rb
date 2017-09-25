@@ -19,7 +19,7 @@ class SitesController < ApplicationController
 
   def create
     @site = Site.new(post_params)
-
+    
     if @site.save
       redirect_to site_path(@site)
     else

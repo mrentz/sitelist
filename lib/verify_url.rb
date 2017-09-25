@@ -56,9 +56,12 @@ class VerifyUrl
     validation new_domain, status(domain + tld[i].to_s)
   end
   
-  def self.validation url, validation
-    domain_preprocess = [url, validation]
+  def self.validation url, status_code
+    domain_preprocess = [url, status_code]
     p domain_preprocess
+    if (status_code >= 400) then
+      errors.add(:url_status, "#{url} doesn't seem to be a valid url")
+    end
   end
   
   def self.check(url)
@@ -67,9 +70,6 @@ class VerifyUrl
       domain = assign_url(get_domain(url))
     else
       a = validation(url, url_status)
-    end
-    if (url_status >= 400) then
-      errors.add(:url_status, "#{url} doesn't seem to be a valid url")
     end
   end
   
