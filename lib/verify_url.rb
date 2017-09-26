@@ -35,9 +35,9 @@ class VerifyUrl
   def self.assign_protocol(domain)
     protocol = ['http://', 'https://', 'http://www.', 'https://www.']
     i = 0
-    while i < protocol.size && (status(domain + protocol[i]) =~ /^3|2/ ).nil?
+    while i < protocol.size && (status(protocol[i] + domain) =~ /^3|2/ ).nil?
       full_domain = protocol[i] + domain
-      p "trying " + full_domain
+      p "trying " + full_domain + "  #{status(protocol[i] + domain)}"  
       i +=1
     end
     return full_domain
@@ -47,25 +47,29 @@ class VerifyUrl
     tld = [".com", '.net', '.org']
     i = 0
     new_domain = domain + tld[0]
-    while i < tld.size && (status(domain + tld[i]) =~ /^3|2/ ).nil?
-      p "trying " + domain + tld[i]
+    while i < tld.size && (status(domain + tld[i]).to_s =~ /^3|2/ ).nil?
+      p "trying " + domain + tld[i] + "  #{status domain + tld[i]}"  
       new_domain = assign_protocol domain + tld[i]
       i +=1
     end
-    p "exiting with status #{status domain + tld[i].to_s}"
-    validation new_domain, status(domain + tld[i].to_s)
+    p "exiting with status #{status(new_domain)}"
+    validation new_domain, status(new_domain)
   end
   
   def self.validation url, status_code
     domain_preprocess = [url, status_code]
     p domain_preprocess
     if (status_code >= 400) then
-      errors.add(:url_status, "#{url} doesn't seem to be a valid url")
+      p "#{url} doesn't seem to be a valid url"
+#      errors.add(:url_status, "#{url} doesn't seem to be a valid url")
+    else
+      return url
     end
   end
   
   def self.check(url)
-    url_status = status(url).to_i
+    url_status = status(url)
+    p url_status
     if  (url_status.to_s =~ /^3|2/).nil? then # if not valid a valid url
       domain = assign_url(get_domain(url))
     else

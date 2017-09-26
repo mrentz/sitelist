@@ -35,9 +35,9 @@ class VerifyUrl
   def self.assign_protocol(domain)
     protocol = ['http://', 'https://', 'http://www.', 'https://www.']
     i = 0
-    while i < protocol.size && (status(domain + protocol[i]) =~ /^3|2/ ).nil?
+    while i < protocol.size && (status(protocol[i] + domain) =~ /^3|2/ ).nil?
       full_domain = protocol[i] + domain
-      p "trying " + full_domain
+      p "trying " + full_domain + "  #{status(protocol[i] + domain)}"  
       i +=1
     end
     return full_domain
@@ -48,12 +48,12 @@ class VerifyUrl
     i = 0
     new_domain = domain + tld[0]
     while i < tld.size && (status(domain + tld[i]).to_s =~ /^3|2/ ).nil?
-      p "trying " + domain + tld[i]
+      p "trying " + domain + tld[i] + "  #{status domain + tld[i]}"  
       new_domain = assign_protocol domain + tld[i]
       i +=1
     end
-    p "exiting with status #{status domain + tld[i].to_s}"
-    validation new_domain, status(domain + tld[i].to_s)
+    p "exiting with status #{status(new_domain)}"
+    validation new_domain, status(new_domain)
   end
   
   def self.validation url, status_code
