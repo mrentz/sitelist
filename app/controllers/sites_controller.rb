@@ -21,6 +21,7 @@ class SitesController < ApplicationController
     @site = Site.new(post_params)
     
     if @site.save
+      flash[:success] = "Website successfully saved!"
       redirect_to site_path(@site)
     else
       render 'new'
