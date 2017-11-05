@@ -1,4 +1,3 @@
-require 'net/http'
 require 'verify_url.rb'
 
 class Site < ApplicationRecord
@@ -7,12 +6,7 @@ class Site < ApplicationRecord
   validates :site, :url, uniqueness: true
 
   validate :verify_url, on: :create
-
-def parse_url
-  if self.url
-    self.url = Domainatrix.parse(self.url).url
-  end
-end
+  validate :verify_url, on: :update
 
 def verify_url
   if self.url

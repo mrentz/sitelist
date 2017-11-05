@@ -3,6 +3,5 @@
 <p> created on <%= @site.date %> </p>
 <p> <%= @site.description %> </p>
 <p> <%= link_to @site.url, "http://#{@site.url}" %> </p>
-<%= link_to "Back to Site List", root_path %>
-<%= link_to "Edit Site", edit_site_path %>
+<%= link_to "Edit ", edit_site_path %>
 <%= link_to "Delete", site_path(@site), method: :delete %>
