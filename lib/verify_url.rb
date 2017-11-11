@@ -58,7 +58,7 @@ class VerifyUrl < ApplicationRecord
     p domain_preprocess
     if (status_code >= 400) then
       p "#{url} doesn't seem to be a valid url"
-#      errors.add(:url, "#{url} doesn't seem to be a valid url")
+      errors.add(:url, "#{url} doesn't seem to be a valid url")
     else
       return url
     end

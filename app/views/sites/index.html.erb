@@ -1,5 +1,12 @@
 <h1>List of Websites</h1>
 
+<h2>Welcome to Sitelist!</h2>
+<p>Here you can save your favourite website in case you want to show it to your friends but you are worried that you may not be able to remember the name of the address when you go to try and type it into the address bar.</p><br>
+
+<p>That's right! You no longer have to memorize all of those websites that you think you might want to visit again sometime in the future. you can simply save them on this site and then click on it and it will take you to their page!!!</p>
+
+<h3> Enjoy!</h3>
+
 <ul>
 <%@sites.each do |site| %>
  <li> <%= link_to site.site, site_path(site.id) %></li>

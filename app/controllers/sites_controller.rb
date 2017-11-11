@@ -36,7 +36,8 @@ class SitesController < ApplicationController
   def update
     @site = Site.find(params[:id])
     
-    if @site.update(post_params)
+    if @site.valid?
+      @site.update(post_params)
       flash[:success] = "Website successfully updated!"
       redirect_to site_path(@site)
     else
